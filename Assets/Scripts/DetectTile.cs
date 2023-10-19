@@ -1,13 +1,25 @@
+using System;
 using UnityEngine;
 
 public class DetectTile : MonoBehaviour
 {
-   
-    private void OnCollisionEnter(Collision other)
+    private MovePlayer movePlayer;
+    private string currentPlayerTile;
+
+    private void Awake()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 0.5f))
+        movePlayer = GetComponent<MovePlayer>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tile"))
         {
-            Debug.Log("Tile underneath is: " + other.gameObject.name);
+            currentPlayerTile = other.gameObject.name;
+            if (currentPlayerTile == movePlayer.GetSelectedTileName())
+            {
+                Debug.Log("Tile underneath is: " + currentPlayerTile);   
+            }
         }
     }
 }
