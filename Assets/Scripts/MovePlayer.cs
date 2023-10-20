@@ -1,73 +1,94 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
 {
-    private float speed = 10f;
+    public static MovePlayer Instance { get; private set; }
+    
     private Camera cameraVar;
-    private Vector3 targetPosition;
     private Vector3 currentPosition;
-    private int moveRange;
+    private Vector3 clickedPosition;
     private bool isMoving;
+    private float maxRange = 3f;
+    private float speed = 5f;
 
     private void Awake()
     {
+        Instance = this;
         cameraVar = Camera.main;
-        targetPosition = transform.position;
+    }
+
+    private void Start()
+    {
         currentPosition = transform.position;
-        moveRange = 3;
-        isMoving = false;
     }
 
     private void Update()
     {
-
-        if (CheckIfInRange())
-        {
-            Move();
-        }
-        
         if (!isMoving)
         {
             Mouse mouse = Mouse.current;
             if (mouse.leftButton.wasPressedThisFrame)
             {
-                isMoving = true;
                 Vector3 mousePosition = mouse.position.ReadValue();
                 Ray ray = cameraVar.ScreenPointToRay(mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    targetPosition = new Vector3(hit.transform.position.x, 1, hit.transform.position.z);
-                    // Debug.Log("click " + targetPosition);
+                    clickedPosition = new Vector3(hit.transform.position.x, 1, hit.transform.position.z);
+                    CheckPosition();
                 }
-            }
-            // Debug.Log(Vector3.Distance(currentPosition, targetPosition));
+            }   
         }
 
-        if (transform.position == targetPosition && isMoving)
+        Debug.Log("current: " +currentPosition + ", clicked: " + clickedPosition);
+        Debug.Log(clickedPosition - currentPosition);
+        if (isMoving)
+        {
+            Move();
+        }
+    }
+
+    private void CheckPosition()
+    {
+        float distance = Vector3.Distance(currentPosition, clickedPosition);
+        Vector3 position = clickedPosition - currentPosition;
+        if (distance <= maxRange)
+        {
+            if (Mathf.Abs(position.x) > Mathf.Abs(position.z) && (int)currentPosition.z == (int)clickedPosition.z)
+            {
+                isMoving = true;
+            }
+            else if(Mathf.Abs(position.x) < Mathf.Abs(position.z) && (int)currentPosition.x == (int)clickedPosition.x)
+            {
+                isMoving = true;
+            }
+        }
+        else
+        {
+            isMoving = false;
+        }
+    }
+
+    private void Move()
+    {
+        float step = Time.deltaTime * speed;
+        transform.position = Vector3.MoveTowards(transform.position, clickedPosition, step);
+        transform.LookAt(clickedPosition);
+        if (transform.position == clickedPosition)
         {
             currentPosition = transform.position;
             isMoving = false;
         }
     }
 
-    private bool CheckIfInRange()
+    public void StopMoving(Vector3 newPosition)
     {
-        float distance = Vector3.Distance(currentPosition, targetPosition);
-        Vector3 position = targetPosition - currentPosition;
-        if (distance <= moveRange && ((Math.Abs(position.x) > 0.01f && Math.Abs(position.z) < 0.01f) || (Math.Abs(position.x) < 0.01f && Math.Abs(position.z) > 0.01f)))
+        if (isMoving)
         {
-            return true;
+            isMoving = false;
+            transform.position = newPosition;
+            currentPosition = transform.position;
+            clickedPosition = currentPosition;
         }
-        
-        targetPosition = transform.position;
-        isMoving = false;
-        return false;
-    }
-    
-    private void Move()
-    {
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * speed);
     }
 }
