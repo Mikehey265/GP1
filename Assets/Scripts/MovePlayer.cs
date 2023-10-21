@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
@@ -6,6 +7,9 @@ public class MovePlayer : MonoBehaviour
     public static MovePlayer Instance { get; private set; }
     
     private Camera cameraVar;
+    [SerializeField] private GridManager gridManager;
+    private RaycastHit hit;
+    
     private Vector3 currentPosition;
     private Vector3 clickedPosition;
     private bool isMoving;
@@ -25,19 +29,25 @@ public class MovePlayer : MonoBehaviour
 
     private void Update()
     {
+        Mouse mouse = Mouse.current;
+        Vector3 mousePosition = mouse.position.ReadValue();
+        Ray ray = cameraVar.ScreenPointToRay(mousePosition);
         if (!isMoving)
         {
-            Mouse mouse = Mouse.current;
+            gridManager.ResetTileHighlight();
             if (mouse.leftButton.wasPressedThisFrame)
             {
-                Vector3 mousePosition = mouse.position.ReadValue();
-                Ray ray = cameraVar.ScreenPointToRay(mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
                     clickedPosition = new Vector3(hit.transform.position.x, 1, hit.transform.position.z);
                     CheckPosition();
                 }
             }   
+            if(!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out hit))
+            {
+                //highlight the tile when just hovering
+                gridManager.HandleMouseOverTile(hit.transform);
+            }
         }
 
         Debug.Log("current: " +currentPosition + ", clicked: " + clickedPosition);
@@ -45,6 +55,7 @@ public class MovePlayer : MonoBehaviour
         if (isMoving)
         {
             Move();
+            gridManager.HandleMouseSelectedTile(hit.transform);
         }
     }
 
@@ -77,6 +88,7 @@ public class MovePlayer : MonoBehaviour
         if (transform.position == clickedPosition)
         {
             currentPosition = transform.position;
+            gridManager.ResetSelectedTileHighlight();
             isMoving = false;
         }
     }
