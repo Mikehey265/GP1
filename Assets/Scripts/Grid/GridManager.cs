@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class GridManager : MonoBehaviour
 {
-    [Header("[HighlightManager")]
+    [Header("[HighlightManager]")]
     public TileHighlightManager tileHighlightManager;
     
 
@@ -22,11 +22,11 @@ public class GridManager : MonoBehaviour
     {
         tileHighlightManager.ResetHighlight();
     }
+
     public void ResetSelectedTileHighlight()
     {
         tileHighlightManager.ResetSelectionHighlight();
     }
-   
 }
     
 

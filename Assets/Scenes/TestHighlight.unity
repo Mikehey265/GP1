@@ -6228,7 +6228,7 @@ PrefabInstance:
     - target: {fileID: 8993996001131370155, guid: c89e2b11872c5a34597056c60ed2e6ec, type: 3}
       propertyPath: gridManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 716273719}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
