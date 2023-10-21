@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class DetectTile : MonoBehaviour
 {
-    private MovePlayer movePlayer;
+    private MovePlayerOld movePlayer;
     private string currentPlayerTile;
 
     private void Awake()
     {
-        movePlayer = GetComponent<MovePlayer>();
+        movePlayer = GetComponent<MovePlayerOld>();
     }
 
     private void OnTriggerEnter(Collider other)

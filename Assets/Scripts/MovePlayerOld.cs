@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class MovePlayer : MonoBehaviour
+public class MovePlayerOld : MonoBehaviour
 {
     private float speed = 2f;
     private Camera cameraVar;
