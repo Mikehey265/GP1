@@ -13,16 +13,8 @@ public class UIControler : MonoBehaviour
     [SerializeField] private GameObject lostMenu;
     [SerializeField] private GameObject startGameBtn;
     [SerializeField] private GameObject DontKnowMenu;
-    //[SerializeField] private GameObject lostImage;
 
 
-    //[SerializeField] private Sprite closeImage;
-    //[SerializeField] private Sprite pauseImage;
-    //[SerializeField] private Sprite playImage;
-    //[SerializeField] private Sprite resultImage;
-
-    //[SerializeField] private TextMeshProUGUI resultText;
-    //[SerializeField] private TextMeshProUGUI motivationText;
     private bool optionsPicChange = false;
 
 
@@ -30,21 +22,6 @@ public class UIControler : MonoBehaviour
     {
 
     }
-    //public void Options()
-    //{
-    //    Image _playImage = startGameBtn.GetComponent<Image>();
-    //    _playImage.sprite = playImage;
-
-    //    if (!MainMenu.active)
-    //    {
-    //        MainMenu.SetActive(true);
-    //        lostMenu.SetActive(false);
-    //        Time.timeScale = 0.0f;
-    //        _playImage.sprite = playImage;
-    //        //_playImage.sprite.name = "PlayBtn";
-    //    }
-    //}
-
 
 
     public void Pause()
@@ -65,11 +42,7 @@ public class UIControler : MonoBehaviour
         Time.timeScale = 1.0f;
         MainMenu.SetActive(false);
     }
-    //public void LoadingNextScene()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //    Time.timeScale = 1.0f;
-    //}
+   
     public void ExitGame()
     {
         if (Application.isPlaying)
