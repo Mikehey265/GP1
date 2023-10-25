@@ -32,8 +32,9 @@ public class UIControler : MonoBehaviour
     public void Playe()
     {
         Time.timeScale = 1.0f;
-        pauseMenu.SetActive(false);
+        MainMenu.SetActive(false);
         Overlay.SetActive(false);
+        pauseMenu.SetActive(false);
 
     }
     public void StartGame()

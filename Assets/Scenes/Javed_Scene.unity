@@ -2200,14 +2200,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.6472335, b: 0.13020645, a: 1}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0976e2cff9a47d343a6cac172fc3e4aa, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2313,7 +2313,7 @@ GameObject:
   - component: {fileID: 1086608153}
   - component: {fileID: 1086608152}
   m_Layer: 5
-  m_Name: BackToPauseMenuBtn
+  m_Name: RestartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2384,7 +2384,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442206551}
         m_TargetAssemblyTypeName: UIControler, Assembly-CSharp
-        m_MethodName: BackToPauseMenue
+        m_MethodName: ResstartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2591,7 +2591,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442206551}
         m_TargetAssemblyTypeName: UIControler, Assembly-CSharp
-        m_MethodName: BackToPauseMenue
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3932,7 +3932,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442206551}
         m_TargetAssemblyTypeName: UIControler, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: Playe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4125,7 +4125,7 @@ GameObject:
   - component: {fileID: 1913398986}
   - component: {fileID: 1913398985}
   m_Layer: 5
-  m_Name: ClosBtn
+  m_Name: ExitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4196,7 +4196,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442206551}
         m_TargetAssemblyTypeName: UIControler, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
