@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIControler : MonoBehaviour
 {
 
-    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject Overlay;
     [SerializeField] private GameObject SettingMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject lostMenu;
@@ -40,7 +40,7 @@ public class UIControler : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
-        MainMenu.SetActive(false);
+        Overlay.SetActive(false);
     }
    
     public void ExitGame()
@@ -56,9 +56,9 @@ public class UIControler : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        if (MainMenu || SettingMenu || lostMenu || DontKnowMenu)
+        if (Overlay || SettingMenu || lostMenu || DontKnowMenu)
         {
-            MainMenu.SetActive(true);
+            Overlay.SetActive(true);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
@@ -67,9 +67,9 @@ public class UIControler : MonoBehaviour
     }
     public void BackToPauseMenue()
     {
-        if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
+        if (Overlay || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
         {
-            MainMenu.SetActive(false);
+            Overlay.SetActive(false);
             pauseMenu.SetActive(true);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
@@ -85,9 +85,9 @@ public class UIControler : MonoBehaviour
     public void Close()
     {
 
-        if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
+        if (Overlay || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
         {
-            MainMenu.SetActive(false);
+            Overlay.SetActive(false);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
