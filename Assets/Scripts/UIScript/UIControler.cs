@@ -33,7 +33,6 @@ public class UIControler : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         MainMenu.SetActive(false);
-        Overlay.SetActive(false);
         pauseMenu.SetActive(false);
 
     }
@@ -61,13 +60,12 @@ public class UIControler : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        if (MainMenu || SettingMenu || lostMenu || Overlay)
+        if (MainMenu || SettingMenu || lostMenu)
         {
             MainMenu.SetActive(true);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
-            Overlay.SetActive(false);
         }
     }
     public void BackToPauseMenue()
@@ -91,13 +89,12 @@ public class UIControler : MonoBehaviour
     public void Close()
     {
 
-        if (MainMenu || pauseMenu || lostMenu || SettingMenu || Overlay)
+        if (MainMenu || pauseMenu || lostMenu || SettingMenu)
         {
             MainMenu.SetActive(false);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
-            Overlay.SetActive(false);
 
             Time.timeScale = 1.0f;
         }
