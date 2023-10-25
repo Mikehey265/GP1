@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class UIControler : MonoBehaviour
 {
 
-    [SerializeField] private GameObject Overlay;
+    [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject SettingMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject lostMenu;
     [SerializeField] private GameObject startGameBtn;
-    [SerializeField] private GameObject DontKnowMenu;
+    [SerializeField] private GameObject Overlay;
 
 
     private bool optionsPicChange = false;
@@ -33,16 +33,20 @@ public class UIControler : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
-        DontKnowMenu.SetActive(false);
+        Overlay.SetActive(false);
 
     }
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
-        Overlay.SetActive(false);
+        MainMenu.SetActive(false);
     }
-   
+   public void ResstartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1.0f;
+    }
     public void ExitGame()
     {
         if (Application.isPlaying)
@@ -56,42 +60,43 @@ public class UIControler : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        if (Overlay || SettingMenu || lostMenu || DontKnowMenu)
+        if (MainMenu || SettingMenu || lostMenu || Overlay)
         {
-            Overlay.SetActive(true);
+            MainMenu.SetActive(true);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
-            DontKnowMenu.SetActive(false);
+            Overlay.SetActive(false);
         }
     }
     public void BackToPauseMenue()
     {
-        if (Overlay || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
-        {
-            Overlay.SetActive(false);
-            pauseMenu.SetActive(true);
-            lostMenu.SetActive(false);
-            SettingMenu.SetActive(false);
-            DontKnowMenu.SetActive(false);
-        }
+        pauseMenu.SetActive(true);
+        //if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
+        //{
+        //    MainMenu.SetActive(false);
+        //    pauseMenu.SetActive(true);
+        //    lostMenu.SetActive(false);
+        //    SettingMenu.SetActive(false);
+        //    DontKnowMenu.SetActive(false);
+        //}
     }
     public void GameSetting()
     {
-        pauseMenu.SetActive(false);
+        MainMenu.SetActive(false);
         SettingMenu.SetActive(true) ;
 
     }
     public void Close()
     {
 
-        if (Overlay || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
+        if (MainMenu || pauseMenu || lostMenu || SettingMenu || Overlay)
         {
-            Overlay.SetActive(false);
+            MainMenu.SetActive(false);
             pauseMenu.SetActive(false);
             lostMenu.SetActive(false);
             SettingMenu.SetActive(false);
-            DontKnowMenu.SetActive(false);
+            Overlay.SetActive(false);
 
             Time.timeScale = 1.0f;
         }
