@@ -7,7 +7,7 @@ public class Coordinates : MonoBehaviour
     private TextMeshPro label;
     private Vector2Int coordinates;
     private bool isWalkable;
-    
+
     private void Awake()
     {
         label = GetComponent<TextMeshPro>();

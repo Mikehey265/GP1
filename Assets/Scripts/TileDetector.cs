@@ -3,7 +3,7 @@ using UnityEngine;
 public class TileDetector : MonoBehaviour
 {
     private Vector3 lastTilePosition;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Wall"))

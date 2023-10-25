@@ -8,22 +8,22 @@ public class TileHighlightManager : MonoBehaviour
     public Material highlightMaterial;
     public Material originalMaterial;
     public Material selectionMaterial;
-    
-    
-    
+
+
+
     private Transform currentlyHighlighted = null;
     private Transform currentlySelected = null;
-    
+
     //then use in MovePlayer class
     public void HighlightTile(Transform tileTransform)
     {
-        
+
         // Reset previous highlight if any
         if (currentlyHighlighted)
         {
             currentlyHighlighted.GetComponentInChildren<MeshRenderer>().material = originalMaterial;
         }
-        
+
         if (tileTransform.CompareTag("Tile"))
         {
             //get out cube from the game object

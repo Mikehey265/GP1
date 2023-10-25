@@ -8,7 +8,7 @@ public class GridManager : MonoBehaviour
 {
     [Header("[HighlightManager]")]
     public TileHighlightManager tileHighlightManager;
-    
+
 
     public void HandleMouseOverTile(Transform tileTransform)
     {
@@ -28,7 +28,7 @@ public class GridManager : MonoBehaviour
         tileHighlightManager.ResetSelectionHighlight();
     }
 }
-    
 
-    
+
+
 
