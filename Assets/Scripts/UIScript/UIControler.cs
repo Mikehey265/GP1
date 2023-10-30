@@ -73,18 +73,7 @@ public class UIControler : MonoBehaviour
             SettingMenu.SetActive(false);
         }
     }
-    //public void BackToPauseMenue()
-    //{
-    //    pauseMenu.SetActive(true);
-    //    if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
-    //    {
-    //        MainMenu.SetActive(false);
-    //        pauseMenu.SetActive(true);
-    //        lostMenu.SetActive(false);
-    //        SettingMenu.SetActive(false);
-    //        DontKnowMenu.SetActive(false);
-    //    }
-    //}
+    
     public void GameSetting()
     {
         MainMenu.SetActive(false);
