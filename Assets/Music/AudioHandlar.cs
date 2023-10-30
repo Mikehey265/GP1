@@ -9,9 +9,10 @@ public class AudioHandlar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("MusicVolume"))
+        string musicVolumeKey = "musicVolume"; // Store the key in a variable to avoid typos
+        if (!PlayerPrefs.HasKey(musicVolumeKey))
         {
-            PlayerPrefs.SetFloat("musicVolume", _slider.value);
+            PlayerPrefs.SetFloat(musicVolumeKey, _slider.value);
             Load();
         }
         else
@@ -24,8 +25,6 @@ public class AudioHandlar : MonoBehaviour
     public void ChangeVolume()
     {
         _audioSource.volume = _slider.value;
-        _slider.value = _audioSource.volume;
-        //AudioListener.volume = _slider.value;
         Save();
     }
     private void Load()
