@@ -47,6 +47,11 @@ public class UIControler : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
     }
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1.0f;
+    }
     public void ExitGame()
     {
         if (Application.isPlaying)
@@ -68,18 +73,18 @@ public class UIControler : MonoBehaviour
             SettingMenu.SetActive(false);
         }
     }
-    public void BackToPauseMenue()
-    {
-        pauseMenu.SetActive(true);
-        //if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
-        //{
-        //    MainMenu.SetActive(false);
-        //    pauseMenu.SetActive(true);
-        //    lostMenu.SetActive(false);
-        //    SettingMenu.SetActive(false);
-        //    DontKnowMenu.SetActive(false);
-        //}
-    }
+    //public void BackToPauseMenue()
+    //{
+    //    pauseMenu.SetActive(true);
+    //    if (MainMenu || pauseMenu || lostMenu || SettingMenu || DontKnowMenu)
+    //    {
+    //        MainMenu.SetActive(false);
+    //        pauseMenu.SetActive(true);
+    //        lostMenu.SetActive(false);
+    //        SettingMenu.SetActive(false);
+    //        DontKnowMenu.SetActive(false);
+    //    }
+    //}
     public void GameSetting()
     {
         MainMenu.SetActive(false);
